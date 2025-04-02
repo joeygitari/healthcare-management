@@ -52,6 +52,16 @@ class MedicalRecord(db.Model):
     prescription = db.Column(db.Text)
     notes = db.Column(db.Text)
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'patient_id': self.patient_id,
+            'appointment_id': self.appointment_id,
+            'diagnosis': self.diagnosis,
+            'prescription': self.prescription,
+            'notes': self.notes
+        }
+
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)

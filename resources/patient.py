@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models import db, Patient
+from datetime import datetime
 
 patient_bp = Blueprint('patient_bp', __name__)
 
@@ -7,6 +8,7 @@ patient_bp = Blueprint('patient_bp', __name__)
 def register_patient():
     data = request.get_json()
     try:
+        data["date_of_birth"] = datetime.strptime(data["date_of_birth"], "%Y-%m-%d").date()
         new_patient = Patient(
             first_name=data['first_name'],
             last_name=data['last_name'],

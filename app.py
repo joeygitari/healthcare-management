@@ -6,6 +6,7 @@ from resources.patient import patient_bp
 from resources.auth import auth_bp
 from resources.appointment import appointment_bp
 from resources.doctor import doctor_bp
+from resources.medical_record import medical_record_bp
 from swagger import swaggerui_blueprint, create_swagger_json
 
 app = Flask(__name__)
@@ -19,6 +20,7 @@ app.register_blueprint(swaggerui_blueprint, url_prefix='/api/docs')
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
 app.register_blueprint(appointment_bp, url_prefix='/api/appointments')
 app.register_blueprint(doctor_bp, url_prefix='/api/doctors')
+app.register_blueprint(medical_record_bp, url_prefix='/api/medical_records')
 
 @app.route('/static/swagger.json')
 def swagger_json():
